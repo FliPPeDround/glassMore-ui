@@ -1,5 +1,6 @@
 <template>
   <div class="attribute">
+    compAttribute
   </div>
 </template>
 

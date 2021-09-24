@@ -1,6 +1,7 @@
 <template>
   <div class='display'>
-    </div>
+    compDisplay
+  </div>
 </template>
 
 <script>
