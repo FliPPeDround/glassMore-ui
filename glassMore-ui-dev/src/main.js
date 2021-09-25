@@ -1,19 +1,10 @@
-// import { createApp } from 'vue'
-// import App from './App.vue'
-
-
-// createApp(App).mount('#app')
-
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App.vue'
-// 导入button组件
-import glCard from './components/button.vue'
- 
-Vue.config.productionTip = false
- 
-// 注册组件
-Vue.component(glCard.name, glCard)
- 
-new Vue({
-  render: h => h(App)
-}).$mount('#app')
+import GlDialog from './components/gl-dialog.vue'
+import glModal from './components/gl-modal.vue'
+import './assets/fonts/iconfont.css'
+const app = createApp(App)
+
+app.component('gl-dialog', GlDialog)
+app.component('gl-modal', glModal)
+app.mount("#app")
