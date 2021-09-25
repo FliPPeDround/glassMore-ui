@@ -1,10 +1,21 @@
-<script setup>
-</script>
-
 <template>
-<h1>glassMore-ui</h1>
+  <div id="app">
+    <h1>glassmore-ui</h1>
+  </div>
 </template>
 
-<style>
+<script>
 
+export default {
+}
+</script>
+
+<style lang="scss">
+body {
+  background-color: #0D1E28
+}
+
+h1 {
+  color: #CDBE91
+}
 </style>
