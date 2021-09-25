@@ -1,8 +1,8 @@
 <template>
-  <gl-button>
+  <button @click="toggleModalState">
     打开弹窗
-  </gl-button>
-  <gl-modal v-if="modalOpen" @close="toggleModalState">
+  </button>
+  <gl-modal v-if="modalOpen" @close="toggleModalState" v-bind:title="title">
     <p>你好</p>
   </gl-modal>
 </template>
@@ -13,6 +13,24 @@ export default {
   components: { GlDialog },
   name: 'gl-dialog',
   emits: ['close'],
+  props: {
+    title: {
+      type: String,
+      default: '提示'
+    },
+    width: {
+      type: String,
+      default: '50%'
+    },
+    top: {
+      type: String,
+      default: '15vh'
+    },
+    visible: {
+      type: Boolean,
+      default: true
+    }
+  },
   data: () => ({
     modalOpen: false
   }),

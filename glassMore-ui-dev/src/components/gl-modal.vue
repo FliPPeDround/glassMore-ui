@@ -6,9 +6,9 @@
           <slot name="title">
             <span class="gl-dialog_title">{{title}}</span>
           </slot>
-          <gl-button @click="$emit('close')">
+          <button class="gl-dialog_headerbtn" @click="$emit('close')">
               关闭
-          </gl-button>
+          </button>
         </div>
         <div class="gl-dialog_body">
           <slot></slot>
@@ -91,7 +91,7 @@ export default {
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 18px;
 }
 .gl-dialog_wrapper .gl-dialog_header .gl-dialog_headerbtn:hover {
   color: #FFFFFF;
