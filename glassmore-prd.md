@@ -61,7 +61,6 @@ Vue3；node.js; vite; vue-router
 # 六、功能详情
 
 ## 1. 组件库部分
-
 <table>
   <tr>
     <th>组件名</th>
@@ -140,7 +139,7 @@ Vue3；node.js; vite; vue-router
    <tr>
     <td>message</td>
   	<td>type(str): error(red)/success(green)/default(white)</td>
-    <td>常用于主动操作后的反馈提示。属性type用来定义改message的类型，提供error和success和默认透明玻				璃选项。</td>
+    <td>常用于主动操作后的反馈提示。属性type用来定义改message的类型，提供error和success和默认透明玻璃选项。</td>
   </tr>
   <tr>
     <td>card</td>
@@ -152,8 +151,7 @@ Vue3；node.js; vite; vue-router
   	<td>disabled(boolean)</td>
     <td>属性为disabled的时候表示当前dialog不可使用。</td>
   </tr>
-
-
+</table>
 
 ## 2. 官网部分
 
