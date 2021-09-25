@@ -1,59 +1,24 @@
 <template>
-  <!--   -->
-  <transition name='dialog-fade'>
-    <div class="gl-dialog_wrapper" v-show='visible' @click.self="handleClose">
-      <div class="gl-dialog" :style="{width: width, marginTop: top}">
-        <div class="gl-dialog_header">
-          <slot name="title">
-            <span class="gl-dialog_title">{{title}}</span>
-          </slot>
-          <!-- <button class="gl-dialog_headerbtn" icon="gl-icon-close" circle @click="handleClose"> -->
-          <gl-close-button class="gl-dialog_headerbtn" circle @click="handleClose">
-          </gl-close-button>
-        </div>
-        <div class="gl-dialog_body">
-          <slot></slot>
-        </div>
-        <div class="gl-dialog_footer" v-if="$slots.footer">
-          <slot name="footer"></slot>
-        </div>
-      </div>
-    </div>
-  </transition>
+  <gl-button>
+    打开弹窗
+  </gl-button>
+  <gl-modal v-if="modalOpen" @close="toggleModalState">
+    <p>你好</p>
+  </gl-modal>
 </template>
 
 <script>
-import closeButton from './gl-close-button.vue'
+import GlDialog from'./gl-modal.vue'
 export default {
-  components: { closeButton },
+  components: { GlDialog },
   name: 'gl-dialog',
   emits: ['close'],
-  props: {
-    title: {
-      type: String,
-      default: '提示'
-    },
-    width: {
-      type: String,
-      default: '50%'
-    },
-    top: {
-      type: String,
-      default: '15vh'
-    },
-    visible: {
-      type: Boolean,
-      default: true
-    }
-  },
+  data: () => ({
+    modalOpen: false
+  }),
   methods: {
-    handleClose () {
-      $emit('update:visible', false)
-      console.log(visible)
-    },
-    handleOpen () {
-      this.$emit('update:visible', true)
-      console.log(this.visible)
+    toggleModalState() {
+      this.modalOpen = !this.modalOpen
     }
   }
 }
