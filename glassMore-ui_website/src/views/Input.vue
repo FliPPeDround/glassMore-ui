@@ -58,7 +58,7 @@ const pushComps = () => {
     height: 100%;
     display: flex;
     border-top: 1px solid #fff;
-    border-top-right-radius: 50px;
+    border-top-right-radius: 40px;
   }
   .att {
     width: 65%;
@@ -72,14 +72,7 @@ const pushComps = () => {
   }
   .att::-webkit-scrollbar{
     width: 8px;
-  }
-  /* .att::-webkit-scrollbar-track{
-    display: none;
-  } */
-  .att::-webkit-scrollbar-button:vertical:start {
-    color: #000;
-  }
-  .att::-webkit-scrollbar-thumb{
+  }  .att::-webkit-scrollbar-thumb{
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.3);
   }
@@ -105,9 +98,6 @@ const pushComps = () => {
   .show::-webkit-scrollbar{
     width: 8px;
   }
-  /* .show::-webkit-scrollbar-track{
-    display: none;
-  } */
   .show::-webkit-scrollbar-thumb{
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.3);
@@ -121,7 +111,7 @@ const pushComps = () => {
   }
   .push-comps {
     align-self: flex-end;
-    margin-right: 50px;
+    margin-right: 40px;
     margin-top: 5vw;
     cursor: pointer;
     color: rgba(0, 0, 0, 0.6);
