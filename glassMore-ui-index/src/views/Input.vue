@@ -22,7 +22,7 @@
         <p>可清空</p>
         <pre><code> &lt;gl-input placeholder="请输入文本" v-model="data" clearable /&gt;</code></pre>
       </div>
-      <div class="pushInput" @click="pushInput">添加到项目中</div>
+      <gl-button class="push-comps" @click="pushComps" icon="el-icon-download" rect>添加到项目中</gl-button>
     </div>
     <div class="show">
       <h4>Input</h4>
@@ -41,13 +41,14 @@
 </template>
 <script setup>
 import glInput from './../components/glassMoreComps/gl-input.vue'
+import glButton from './../components/glassMoreComps/gl-button.vue'
 import { pushComponent } from './../util/postCompsName'
 import { reactive } from 'vue'
 const msg = reactive({
   password: '当你凝视深渊的时候.....',
   data: '便随风消逝'
 })
-const pushInput = () => {
+const pushComps = () => {
   pushComponent('Input')
 }
 </script>
@@ -72,8 +73,11 @@ const pushInput = () => {
   .att::-webkit-scrollbar{
     width: 8px;
   }
-  .att::-webkit-scrollbar-track{
+  /* .att::-webkit-scrollbar-track{
     display: none;
+  } */
+  .att::-webkit-scrollbar-button:vertical:start {
+    color: #000;
   }
   .att::-webkit-scrollbar-thumb{
     border-radius: 8px;
@@ -101,9 +105,9 @@ const pushInput = () => {
   .show::-webkit-scrollbar{
     width: 8px;
   }
-  .show::-webkit-scrollbar-track{
+  /* .show::-webkit-scrollbar-track{
     display: none;
-  }
+  } */
   .show::-webkit-scrollbar-thumb{
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.3);
@@ -115,14 +119,12 @@ const pushInput = () => {
     overflow: hidden;
     word-break: break-all;
   }
-  .pushInput {
+  .push-comps {
     align-self: flex-end;
     margin-right: 50px;
     margin-top: 5vw;
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 10px;
-    border-radius: 20px;
     cursor: pointer;
+    color: rgba(0, 0, 0, 0.6);
   }
   pre {
     white-space: nowrap;
