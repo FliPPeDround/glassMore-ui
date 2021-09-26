@@ -12,7 +12,7 @@
       </div>
       <div class="card">
         <p>图标</p>
-        <pre><code> &lt;gl-input placeholder="请输入文本" icon="el-icon-search" /&gt;</code></pre>
+        <pre><code> &lt;gl-input placeholder="请输入文本" icon="gl-icon-search" /&gt;</code></pre>
       </div>
       <div class="card">
         <p>密码</p>
@@ -20,7 +20,7 @@
       </div>
       <div class="card">
         <p>可清空</p>
-        <pre><code> &lt;gl-input placeholder="请输入文本" v-model="msg.data" clearable /&gt;</code></pre>
+        <pre><code> &lt;gl-input placeholder="请输入文本" v-model="data" clearable /&gt;</code></pre>
       </div>
       <div class="pushInput" @click="pushInput">添加到项目中</div>
     </div>
@@ -41,24 +41,14 @@
 </template>
 <script setup>
 import glInput from './../components/glassMoreComps/gl-input.vue'
+import { pushComponent } from './../util/postCompsName'
 import { reactive } from 'vue'
 const msg = reactive({
-  data: '便随风消逝',
-  password: '当你凝视深渊的时候.....'
+  password: '当你凝视深渊的时候.....',
+  data: '便随风消逝'
 })
-const pushInput = async () => {
-  const data = {
-    compName: 'input'
-  }
-
-  const res = await fetch('/addMoudle', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: JSON.stringify(data)
-  })
-  console.log(res)
+const pushInput = () => {
+  pushComponent('Input')
 }
 </script>
 <style scoped>
@@ -76,6 +66,18 @@ const pushInput = async () => {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .att::-webkit-scrollbar{
+    width: 8px;
+  }
+  .att::-webkit-scrollbar-track{
+    display: none;
+  }
+  .att::-webkit-scrollbar-thumb{
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
   }
 
   .att-title {
@@ -88,23 +90,44 @@ const pushInput = async () => {
     width: 90%;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 8px;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   }
   .show {
-    padding: 10px 20px;
+    padding: 0 20px;
     width: 35%;
     height: 100%;
+    overflow-y: auto;
+  }
+  .show::-webkit-scrollbar{
+    width: 8px;
+  }
+  .show::-webkit-scrollbar-track{
+    display: none;
+  }
+  .show::-webkit-scrollbar-thumb{
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.3);
   }
   p {
     margin-left: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
   }
   .pushInput {
     align-self: flex-end;
     margin-right: 50px;
-    margin-top: 50px;
+    margin-top: 5vw;
     background-color: rgba(255, 255, 255, 0.7);
     padding: 10px;
     border-radius: 20px;
     cursor: pointer;
+  }
+  pre {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
   }
 </style>
