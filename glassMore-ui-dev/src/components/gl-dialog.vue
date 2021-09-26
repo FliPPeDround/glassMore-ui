@@ -8,9 +8,7 @@
               {{ title }}
             </span>
           </slot>
-          <gl-button class="gl-dialog_headerbtn" icon="" circle @click="close">
-              关闭
-          </gl-button>
+          <gl-button class="gl-dialog_headerbtn" icon="gl-icon-close" circle @click="close" />
         </div>
         <div class="gl-dialog_body">
           <slot></slot>
