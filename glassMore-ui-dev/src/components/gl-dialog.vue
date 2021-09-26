@@ -1,14 +1,16 @@
 <template>
   <transition name='dialog-fade'>
-    <div class="gl-dialog_wrapper" v-show='visible' @click.self="handleClose">
+    <div name="dialog-fade" class="gl-dialog_wrapper" v-show='visible' @click.self="OnClickOverlay">
       <div class="gl-dialog" :style="{width: width, marginTop: top}">
         <div class="gl-dialog_header">
           <slot name="title">
-            <span class="gl-dialog_title">{{title}}</span>
+            <span class="gl-dialog_title">
+              {{ title }}
+            </span>
           </slot>
-          <button class="gl-dialog_headerbtn" @click="$emit('close')">
+          <gl-button class="gl-dialog_headerbtn" icon="" circle @click="close">
               关闭
-          </button>
+          </gl-button>
         </div>
         <div class="gl-dialog_body">
           <slot></slot>
@@ -22,33 +24,49 @@
 </template>
 
 <script>
-import GlButton from './gl-button.vue'
-export default {
-  components: { GlButton },
-  name: 'gl-modal',
-  emits: ['close'],
-  props: {
-    title: {
-      type: String,
-      default: '提示'
+  import GlButton from './gl-button.vue'
+  export default {
+    name: 'GLModal',
+    components: { GlButton },
+    emits: ['close'],
+    props: {
+      title: {
+        type: String,
+        default: '提示'
+      },
+      width: {
+        type: String,
+        default: '50%'
+      },
+      top: {
+        type: String,
+        default: '15vh'
+      },
+      visible: {
+        type: Boolean,
+        default: false
+      },
+      closeOnClickOverlay: {
+        type: Boolean,
+        default: true
+      }
     },
-    width: {
-      type: String,
-      default: '50%'
-    },
-    top: {
-      type: String,
-      default: '15vh'
-    },
-    visible: {
-      type: Boolean,
-      default: true
+    setup(props, context) {
+      const OnClickOverlay = () => {
+        if(props.closeOnClickOverlay) {
+          close()
+        }
+      }
+      const close = () => {
+      context.emit('update:visible', false)
+      }
+      return {
+        close,
+        OnClickOverlay
+      }
     }
-  },
-  methods: {
   }
-}
-</script>
+  </script>
 
 <style lang='css' scoped>
 .gl-dialog_wrapper {
