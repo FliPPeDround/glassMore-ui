@@ -1,21 +1,34 @@
 <template>
-  <div id="app">
-    <h1>glassmore-ui</h1>
-  </div>
+<div>
+    <h1> molestiae exercitationem veniam adipisci, natus in rem? Expedita dolorum est ratione cupiditate perferendis sequi aut et dolor enim reiciendis.</h1>
+    <gl-dialog>
+        Lorem ipsum dolor nisi?
+    </gl-dialog>
+    <button @click = "toggleModalState">
+        打开弹窗
+    </button>
+    <gl-modal v-if="modalOpen" @close = "toggleModalState">
+    </gl-modal>
+</div>
 </template>
 
 <script>
-
-export default {
-}
+    import glModal from './components/gl-modal.vue'
+    export default {
+        components: {
+            glModal
+        },
+        data: () => ({
+            modalOpen: false
+        }),
+        methods: {
+            toggleModalState() {
+                this.modalOpen = !this.modalOpen;
+            }
+        }
+    }
 </script>
 
-<style lang="scss">
-body {
-  background-color: #0D1E28
-}
+<style>
 
-h1 {
-  color: #CDBE91
-}
 </style>
